@@ -6,4 +6,7 @@ package network.protocol_classes;
  * Thread: dataProcessingThread
  */
 public interface IProtocolClass {
+
+
+    public void execute();
 }

@@ -1,5 +1,6 @@
 package thread;
 
+import network.protocol_classes.DataDecider;
 import util.Constants;
 
 
@@ -21,7 +22,8 @@ public class DataProcessingThread implements Runnable{
 
     @Override
     public void run() {
-
+        DataDecider dataDecider = new DataDecider();
+        dataDecider.start();
 
 
     }

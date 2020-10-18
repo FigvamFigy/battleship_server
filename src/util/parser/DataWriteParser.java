@@ -11,7 +11,7 @@ import java.net.InetSocketAddress;
  * Thread: serverThread
  * Data block standard: <SENDER_IP>|<DESTINATION_IP>|<PURPOSE_TAG>|<THE ACTUALLY DATA BEING SENT> Example: /10.0.0.15:36484|10.0.0.11:5555|CLIENT_TO_SERVER_MESSAGE|Hello World
  */
-public class DataWriteParser {
+public class DataWriteParser implements Comparable{
 
 
     private InetSocketAddress senderIP;
@@ -44,6 +44,12 @@ public class DataWriteParser {
         return str;
     }
 
+    public InetSocketAddress getDestinationIP() {
+        return destinationIP;
+    }
 
-
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
 }
