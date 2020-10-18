@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
 public class IncomingDataQueue {
 
     //A queue is used in order to have the oldest data be processed first
-    private static PriorityQueue<String> incomingDataQueue;
+    private volatile static PriorityQueue<String> incomingDataQueue;
 
     public IncomingDataQueue(){
         incomingDataQueue = new PriorityQueue<>();
@@ -23,7 +23,7 @@ public class IncomingDataQueue {
      *
      * @param newData The raw data that was read by the server. It is not yet parsed
      */
-    public static void addToQueue(String newData){
+    public synchronized static void addToQueue(String newData){
         incomingDataQueue.add(newData);
     }
 
@@ -32,7 +32,7 @@ public class IncomingDataQueue {
      *
      * @return returns the data in the first position of the queue
      */
-    public static String getData(){
+    public synchronized static String getData(){
         return incomingDataQueue.poll();
     }
 
