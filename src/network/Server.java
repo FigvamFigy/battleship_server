@@ -102,7 +102,12 @@ public class Server {
 
             while (isServerRunning) {
 
-               // Thread.sleep(20);
+                Thread.sleep(1000);
+
+                if(timedConnectionHandler.hasConnectionsToClose()){
+                    closeConnections();
+                }
+
 
                 selector.select();//Selects all keys that are ready for I/O operations
 
@@ -123,11 +128,6 @@ public class Server {
                         sendData(key);
                     }
                 }
-
-                if(timedConnectionHandler.hasConnectionsToClose()){
-                    closeConnections();
-                }
-
 
             }
 
@@ -207,6 +207,9 @@ public class Server {
             }
 
         }
+        catch (IOException ioException){
+
+        }
         catch (Exception exception){
             exception.printStackTrace();
         }
@@ -229,7 +232,7 @@ public class Server {
                 if(!key.isAcceptable()){//Skip the server socket/key because we cannot cast it into SocketChannel
                     SocketChannel socketChannel = (SocketChannel)key.channel();
 
-                    if(((InetSocketAddress)socketChannel.getRemoteAddress()).toString().equals(timedConnectionHandler.getAddressToClose().toString())){//if the key and the timedconnection match, close the connectionn
+                    if(timedConnectionHandler.getAddressToClose() != null && ((InetSocketAddress)socketChannel.getRemoteAddress()).toString().equals(timedConnectionHandler.getAddressToClose().toString())){//if the key and the timedconnection match, close the connectionn
                         key.cancel();
                         System.out.println("Closed connection to : " + timedConnectionHandler.getAddressToClose());
                         timedConnectionHandler.closeTimedConnection(timedConnectionHandler.getAddressToClose());
