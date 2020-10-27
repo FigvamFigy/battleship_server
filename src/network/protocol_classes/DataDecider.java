@@ -49,7 +49,12 @@ public class DataDecider {
                 protocolClass = new ClientToServerConnectionCheckProtocolClass(senderIP,destinationIP);
                 protocolClass.execute();
                 break;
-
+            case PLAYER_IS_READY:
+                protocolClass = new PlayerIsReadyProtocolClass(senderIP);
+                protocolClass.execute();
+//            case CLIENT_TO_SERVER_SEND_GRID:
+//                protocolClass = new ClientToServerSendGridProtocolClass(data);
+//                protocolClass.execute();
         }
 
     }

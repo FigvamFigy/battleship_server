@@ -1,6 +1,8 @@
 package network;
 
 
+import graphic_logic.MainLogic;
+import javafx.application.Platform;
 import network.timed_connection.TimedConnectionHandler;
 import thread.DataProcessingThread;
 
@@ -27,7 +29,7 @@ public class Server {
 
 
     //Server Details
-    private InetSocketAddress serverSocketAddress;
+    public static InetSocketAddress serverSocketAddress;
 
 
     //NIO server Stuff
@@ -152,6 +154,18 @@ public class Server {
 
                 timedConnectionHandler.addTimedConnection((InetSocketAddress)receivedSocketChannel.getRemoteAddress());
 
+                Platform.runLater(new Runnable() {//TODO Make a system where you can have multiple players join (more than 2) and not have the program break
+                    @Override
+                    public void run() {
+                        try{
+                            MainLogic.createPlayer((InetSocketAddress)receivedSocketChannel.getRemoteAddress());
+                        }
+                        catch (Exception exception){
+                            exception.printStackTrace();
+                        }
+                    }
+                });
+
                 System.out.println("ADDRESS RECEIVED: " + receivedSocketChannel.getRemoteAddress());
             }
 
@@ -168,7 +182,7 @@ public class Server {
         try{
             SocketChannel socketChannel = (SocketChannel) key.channel();
 
-            ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+            ByteBuffer byteBuffer = ByteBuffer.allocate(10240);
             socketChannel.read(byteBuffer);
 
             String result = new String(byteBuffer.array()).trim();
@@ -243,9 +257,6 @@ public class Server {
         catch (Exception exception){
             exception.printStackTrace();
         }
-
-
-
     }
 
 }
