@@ -1,5 +1,11 @@
 package gameLogic;
 
+
+/**
+ * This is where the game specific game logic is handled. Things like, "is the players click valid" as well as general manipulation of the grids from the players
+ *
+ * Thread: JavaFX Application
+ */
 public class GameLogic {
 
 
@@ -28,6 +34,10 @@ public class GameLogic {
         this.playerTwo = playerTwo;
     }
 
+    /**
+     * After the server determines that both players are ready to play, this method will be called and the game logic will start here.
+     *
+     */
     public void startGame(){
         playerTurn = playerOne;
     }

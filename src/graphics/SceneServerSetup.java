@@ -18,6 +18,11 @@ import thread.ServerThread;
  */
 import java.net.InetAddress;
 
+/**
+ * The scene for the login
+ *
+ * Thread: JavaFX Application
+ */
 public class SceneServerSetup extends Scene {
 
 

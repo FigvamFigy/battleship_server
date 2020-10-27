@@ -8,6 +8,13 @@ import util.parser.DataWriteParser;
 
 import java.net.InetSocketAddress;
 
+/**
+ * Every 9 seconds (from Constants.java), the client will send a request to the server to see if the server is still alive. If the server is alive, this class will be created
+ * and will create a response to the client.
+ *
+ *
+ * Thread: DataProcessingThread
+ */
 public class ClientToServerConnectionCheckProtocolClass implements IProtocolClass {
 
 
@@ -19,12 +26,20 @@ public class ClientToServerConnectionCheckProtocolClass implements IProtocolClas
         this.destinationIP = destinationIP;
     }
 
+    /**
+     * After this method is called, it will say to the TimedConnectionHandler.java to keep holding the client connection
+     *
+     */
     @Override
     public void execute() {
         TimedConnectionHandler.continueTimedConnection(senderIP);
         createResponse();
     }
 
+    /**
+     * In order for the client to not close its socket, the serer will respond to the client with this message
+     *
+     */
     private void createResponse() {
         DataWriteParser dataWriteParser = new DataWriteParser(
                 destinationIP,

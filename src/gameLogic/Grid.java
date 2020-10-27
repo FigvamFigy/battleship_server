@@ -6,7 +6,8 @@ import java.io.Serializable;
 
 
 /**
- * This class is created when a new board is created. A board can be friendly or an enemy. This grid holds the cells in its Cell[][]
+ * This grid is made up of Cell.java. This class creates new instances of Cell.java in the constructor. This class is mostly utilized for storage as well as other game
+ * specific methods such as "can the player place a ship on this cell"
  *
  * Thread: JavaFX Application
  */

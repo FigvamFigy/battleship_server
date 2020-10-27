@@ -8,7 +8,7 @@ import util.parser.DataReadParser;
 import java.net.InetSocketAddress;
 
 /**
- * This class will be responsible for parsing the incoming data and applying the correct actions from the data
+ * This class will be responsible for parsing the incoming data and applying the correct actions from the data.
  *
  * Thread: dataProcessingThread
  */
