@@ -7,6 +7,6 @@ package network.protocol_classes;
  */
 public interface IProtocolClass {
 
-
+    //This method is always called in the DataDecider.java. Each protocol class has its own implementation of this method depending on the needs
     public void execute();
 }

@@ -2,6 +2,12 @@ package gameLogic;
 
 import java.net.InetSocketAddress;
 
+
+/**
+ * This class is used to keep track who's grid belongs to who. The player is dependant on the ip of the client to differ from each other
+ *
+ * Thread: JavaFX Application
+ */
 public class Player {
 
 

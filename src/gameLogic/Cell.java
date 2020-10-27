@@ -6,13 +6,17 @@ import util.EnumCellType;
 import java.io.Serializable;
 
 /**
- * This is the logic part of the cell. A cell is a singular square on the board.
+ * This cell is responsible for the logical side of the game logic of holding information about the cell. A cell can be in different types of states, and depending
+ * on these states it will act different in the GameLogic.java.
  *
  * Thread: JavaFX Application
  */
 public class Cell implements Serializable {
 
     private EnumCellState state;
+
+    //The type of cell is specified on its creation. FRIENDLY and ENEMY is used in the client. However, the server Cell.java must stay the same as the client Cell.java
+    //in order for serialization to work. When the clients send their grids at the start, both grids will be FRIENDLY. So somewhere else there must be a designation between the two clients
     private EnumCellType type;
 
     private int cellID;

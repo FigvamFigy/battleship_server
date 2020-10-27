@@ -8,8 +8,8 @@ import util.EnumScene;
 
 /**
  * This is the class that will be responsible for the actual GUI logic. It will create things needed for JavaFX.
- * This class will not have any buttons/text fields/etc. The purpose this class will hold is to hold scenes that will be shown when needed.
- * It is essentially like a general, it does not actually do the dirty work but instead it commands other people (classes) to do it
+ * This class will not have any buttons/text fields/etc. The purpose of this class is to hold scenes that will be shown when needed.
+ * It is essentially like a general, it does not actually do the dirty work but instead it commands other people (different scenes) to do it
  *
  * Thread: JavaFX Application
  */
