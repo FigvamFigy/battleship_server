@@ -3,14 +3,14 @@
 
 This is the server portion of the battleship project we are doing. 
 
-#High Level Understanding of how the Program Works:
+# High Level Understanding of how the Program Works:
 
 The clients are dependent on the server for everything. From receiving updated
  game grid from knowing if they can start the game. Essentially, whatever the
  client does has to get permission from the server.
  
  
-#Threads
+# Threads
 In the server, there are three important threads that are used to make everything
 run. The threads are: *JavaFX Application*, *serverThread*, and *dataProcessingThread*
 
@@ -39,7 +39,7 @@ within the *serverThread*.
 
 The server part of the battleship thing being for fun
 
-#Systems
+# Systems
 There are systems designed that each serve an important purpose for the server
 to run.
 
